@@ -8,9 +8,8 @@ import (
 
 var logger *log.Logger
 
-func init() {
-	envLogLevel, ok := os.LookupEnv("LOG_LEVEL")
-	if !ok {
+func GetLogger(envLogLevel string) *log.Logger {
+	if envLogLevel == "" {
 		envLogLevel = "InfoLevel"
 	}
 	logLevel, err := log.ParseLevel(envLogLevel)
@@ -23,9 +22,6 @@ func init() {
 		Formatter: getCustomFormatter(),
 		Level:     logLevel,
 	}
-}
-
-func GetLogger() *log.Logger {
 	return logger
 }
 
