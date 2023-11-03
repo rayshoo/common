@@ -1,15 +1,15 @@
 package common
 
-import "strings"
+import s "strings"
 
-func CombineStrings(str string) string {
-	var builder strings.Builder
-	for _, c := range str {
-		if c >= 'a' && c <= 'z' {
-			builder.WriteRune('A' + (c - 'a'))
-		} else {
-			builder.WriteRune(c)
+func CombineString(strings ...string) (*string, error) {
+	var builder s.Builder
+	for i := range strings {
+		_, err := builder.WriteString(strings[i])
+		if err != nil {
+			return nil, err
 		}
 	}
-	return builder.String()
+	result := builder.String()
+	return &result, nil
 }
