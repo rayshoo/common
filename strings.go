@@ -33,9 +33,11 @@ func CombineStringWithRuneSeparator(sep rune, strings ...string) (*string, error
 		if err != nil {
 			return nil, err
 		}
-		_, err = builder.WriteRune(sep)
-		if err != nil {
-			return nil, err
+		if i != len(strings)-1 {
+			_, err = builder.WriteRune(sep)
+			if err != nil {
+				return nil, err
+			}
 		}
 	}
 	result := builder.String()
@@ -49,9 +51,11 @@ func CombineStringWithStringSeparator(sep string, strings ...string) (*string, e
 		if err != nil {
 			return nil, err
 		}
-		_, err = builder.WriteString(sep)
-		if err != nil {
-			return nil, err
+		if i != len(strings)-1 {
+			_, err = builder.WriteString(sep)
+			if err != nil {
+				return nil, err
+			}
 		}
 	}
 	result := builder.String()
@@ -65,9 +69,11 @@ func CombineStringWithRuneSeparatorReferrer(sep *rune, strings *[]string) (*stri
 		if err != nil {
 			return nil, err
 		}
-		_, err = builder.WriteRune(*sep)
-		if err != nil {
-			return nil, err
+		if i != len(*strings)-1 {
+			_, err = builder.WriteRune(*sep)
+			if err != nil {
+				return nil, err
+			}
 		}
 	}
 	result := builder.String()
@@ -80,9 +86,11 @@ func CombineStringWithStringSeparatorReferrer(sep *string, strings *[]string) (*
 		if err != nil {
 			return nil, err
 		}
-		_, err = builder.WriteString(*sep)
-		if err != nil {
-			return nil, err
+		if i != len(*strings)-1 {
+			_, err = builder.WriteString(*sep)
+			if err != nil {
+				return nil, err
+			}
 		}
 	}
 	result := builder.String()
