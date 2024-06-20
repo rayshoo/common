@@ -8,6 +8,8 @@ import (
 
 var logger *log.Logger
 
+var Fields log.Fields
+
 func GetLogger(envLogLevel string) *log.Logger {
 	if envLogLevel == "" {
 		envLogLevel = "InfoLevel"
